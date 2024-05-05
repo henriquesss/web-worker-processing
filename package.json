@@ -1,0 +1,15 @@
+{
+  "name": "performance_e_multithreading",
+  "version": "1.0.0",
+  "description": "Web app to test performancing with multithreading",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx browser-sync -w"
+  },
+  "keywords": [],
+  "author": "Lucas Henriques",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.2"
+  }
+}
