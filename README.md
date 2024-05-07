@@ -30,3 +30,6 @@ npm run start
 - [ ]  Discover and use a good practice at `src/service.js`instead of `lines.shift()`
 - [ ]  Use lib `csvtojson` instead of function at `src/service.js`
 - [ ]  Fix the line numbers 
+
+## Where i can use Workers?
+https://caniuse.com/?search=worker

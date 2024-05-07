@@ -1,55 +1,53 @@
 export default class View {
-    #csvFile = document.querySelector("#csv-file")
-    #fileSize = document.querySelector("#file-size")
-    #form = document.querySelector("form")
-    #debug = document.querySelector("debug")
-    #progress = document.querySelector("progress")
-    #worker = document.querySelector("worker")
-
-
+    #debugElement = document.getElementById('debug')
+    #fileSizeElement = document.getElementById('file-size')
+    #processingProgress = document.getElementById('progress')
+    #csvFile = document.querySelector('#csv-file')
+    #form = document.querySelector('#form')
+    #workerChecker = document.querySelector('#worker')
+  
+    configureOnFileChange(fn) {
+      this.#csvFile.addEventListener('change', e => {
+        fn(e.target.files[0])
+      })
+    }
     setFileSize(size) {
-        this.#fileSize.innerText = `File size ${size}\ns`
+      this.#fileSizeElement.innerText = `File size: ${size}\n`
     }
-
-    configureFileChange(fn) {
-        this.#csvFile.addEventListener('change', e => {
-            fn(e.target.files[0])
-        })
-    }
-
-    configureOnFormSubmit(fn) {
-        this.#form.reset()
-        this.#form.addEventListener("submit", (event) => {
-            event.preventDefault() // Avoid page restart
-            const file = this.#csvFile.files[0]
-            if(!file) {
-                // This code should be at Controller
-                alert('Please select a file')
-                return
-            }
-
-            this.updateDebugLog("")
-            const form = new FormData(event.currentTarget)
-            const description = form.get('description')
-            fn({ description, file })
-        })
-    }
-
-    updateDebugLog(text, reset = true) {
-        if(reset) {
-            this.#debug.innerText = text
-            return
-        }
-
-        this.#debug.innerText += text
-    }
-
-    updateProgress(value) {
-        this.#progress.value = value
-    }
-
     isWorkerEnabled() {
-        return this.#worker.checked
+      return this.#workerChecker.checked
     }
-
-}
+    updateProgress(value) {
+      this.#processingProgress.value = value
+    }
+    
+    configureOnFormSubmit(fn) {
+      this.#form.reset()
+      this.#form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const file = this.#csvFile.files[0]
+        if (!file) {
+          alert('Please select a file')
+          return
+        }
+  
+        this.updateDebugLog("")
+  
+        const form = new FormData(e.currentTarget)
+        const description = form.get('description')
+  
+        fn({ description, file })
+  
+      })
+    }
+  
+    updateDebugLog(text, reset = true) {
+      if (reset) {
+        this.#debugElement.innerText = text
+        return
+      }
+  
+      this.#debugElement.innerText += text
+    }
+  
+  }
