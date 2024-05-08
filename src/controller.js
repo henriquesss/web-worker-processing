@@ -10,9 +10,15 @@ export default class Controller {
     ocurrenceUpdate: ({ found, linesLength, took }) => {
       const [[key, value]] = Object.entries(found)
 
-      this.#view.updateDebugLog(
-        `found ${value} ocurrencies of ${key} - over ${linesLength} lines - took: ${took}`
-      )
+      if(key === "/(?:)/i") {
+        this.#view.updateDebugLog(
+          `${linesLength} processed lines - took: ${took}`
+        )
+      } else {
+        this.#view.updateDebugLog(
+          `found ${value} ocurrencies of ${key} - over ${linesLength} lines - took: ${took}`
+        )
+      }
     }
   }
 
