@@ -1,16 +1,18 @@
 # Performance and multithreading on the Browser  
 
+<img width="1439" alt="ew-processing" src="https://github.com/henriquesss/web-worker-processing/assets/20709402/d8f3d5ab-e099-44ef-bc29-c5df8352dc4a">
+
 ## Based on Erick's Wendel Tutorial
 https://www.youtube.com/watch?v=-wXPxJYhZeI&list=WL&index=18
 
 ### Requirements
-nvm (to download the correct version of Node)
-csv asset to read and test stuff. You can use this one [Kagle](https://www.kaggle.com/datasets/foenix/slc-crime?select=SLC_Police_Calls_2013__2016_cleaned_geocoded.csv)
+- nvm (to download the correct version of Node)
+- csv asset to read and test stuff. You can use this one [Kagle](https://www.kaggle.com/datasets/foenix/slc-crime?select=SLC_Police_Calls_2013__2016_cleaned_geocoded.csv)
 
 ### Instalation
-git clone https://github.com/henriquesss/web-workers-at-browser
-nvm use
-npm run start
+- git clone https://github.com/henriquesss/web-workers-at-browser
+- nvm use
+- npm run start
 
 ### Architecture
 - `src/controller.js`= Intermediador/validador de recursos
