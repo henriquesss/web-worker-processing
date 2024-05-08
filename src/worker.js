@@ -1,19 +1,16 @@
-import Service from "./service"
-
+import Service from './service.js'
+console.log(`I'm alive!`)
 const service = new Service()
-postMessage({ eventType: 'alive' })  
 
+postMessage({ eventType: 'alive' })
 onmessage = ({ data }) => {
-    const { query, file } = data
-
-    service.processFile({
-        query,
-        file,
-        onCurrenceUpdate: (args) => {
-            postMessage({ eventType: 'ocurrenceUpdate', ...args })    
-        },
-        onprogress: (total) => { postMessage({ eventType: 'progress', total }) }
-    })
-    
-    console.log('hey from worker')
+  const { query, file } = data
+  service.processFile({
+    query,
+    file,
+    onOcurrenceUpdate: (args) => {
+      postMessage({ eventType: 'ocurrenceUpdate', ...args })
+    },
+    onProgress: (total) => postMessage({ eventType: 'progress', total })
+  })
 }
